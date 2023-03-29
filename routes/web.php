@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'home']);
+Route::get('/home/list', [App\Http\Controllers\HomeController::class, 'list']);
+Route::get('/home/detail/{id}', [App\Http\Controllers\HomeController::class, 'detail']);
+Route::get('/home/list', [App\Http\Controllers\HomeController::class, 'index'])
+->name('home/list.index');

@@ -8,7 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>商品一覧画面</title>
 </head>
-<body>  
+<body>
+    <!-- ナビゲーションを表示 -->
     @include('parts.navi')  
     <!-- <div class="">商品一覧画面</div>-->
 
@@ -31,6 +32,7 @@
                     <th>名前</th>
                     <th>種別</th>
                     <th>概要</th>
+                    <th>更新日時</th>
                     <th></th>
                 </thead>
                 @foreach($items as $item)   <!-- foreachでの配列変数名itemsに変数名itemとしてデータ格納される -->
@@ -39,13 +41,11 @@
                         <td>{{$item->name}}</td>
                         <td>{{$item->type}}</td>
                         <td>{{$item->detail}}</td>
+                        <td>{{$item->updated_at}}</td>
                         <td class="text-center"><a href="/home/detail/{{$item->id}}">詳細</a></td>
-                        <!-- <td> -->
-                        <!-- <button class="col-12 btn"  type="submit">詳細</button> -->
-                        <!-- </td> -->
                     </tr>
-                    @endforeach
-
+                @endforeach
+                
             </table>
         </div>    
     </div>  

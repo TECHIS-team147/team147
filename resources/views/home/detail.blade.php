@@ -9,22 +9,25 @@
     <title>詳細画面</title>
 </head>
 <body>
+    <!-- ナビゲーションを表示 -->
     @include('parts.navi')
     <!-- <div class="h1">詳細画面</div> -->
 
+
     <div class="container"> 
-        <div class="row text-center align-center">            
+        <div class="row">            
             <div class="col-12 mt-3">         
             <div class="col-2">
             </div>     
             <div class="col-8">
-                <form action="/home/detail" method="post">
+                <h4 class="detail_header text-center align-center">商品詳細 商品ＩＤ：{{$item->id}}</h4>
+                <p class="">更新日時  {{$item->updated_at}}</p>
+                <form action="/home/detail" method="post" class="text-center align-center">
                     @csrf
-                    <h4 class="detail_header">商品詳細 商品ＩＤ：{{$item->id}}</h4>
                     <table class="table table-bordered">
                         <tr><th>名前</th><td>{{$item->name}}</td></tr>
-                        <tr><th>種別</th><td>{{$item->type}}</td></tr>
-                        <tr><th>概要</th><td>{{$item->detail}}</td></tr>
+                        <tr><th>種別</th><td>{{$item->type}}</td></tr>          
+                        <tr><th>概要</th><td>{{$item->detail}}</td></tr> 
                         <tr><th>写真</th><td>{{$item->image}}</td></tr>
                     </table>
                 </form>
@@ -38,3 +41,5 @@
 
 </body>
 </html>
+
+                       

@@ -9,8 +9,9 @@
     <title>ホーム画面</title>
 </head>
 <body>
+    <!-- ナビゲーションを表示 -->
     @include('parts.navi')
-<!-- <div class="">ホーム画面</div>-->  
+    <!-- <div class="">ホーム画面</div>-->  
 
     <div class="container">
         <!-- <div class="side">
@@ -25,8 +26,12 @@
 
                 <!-- 画像を表示 -->
                 <div class="container">
+
+                <div class="">
+                    <img class="img1" src="{{ asset('img/insect.png') }}" alt="昆虫">
+                </div>
                 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-5">
                     <img class="img1" src="{{ asset('img/カブトムシ.png') }}" alt="カブトムシ">
                     </div>
@@ -52,7 +57,7 @@
                     <div class="col-5">
                     <img class="img5" src="{{ asset('img/バッタ.png') }}" alt="バッタ">
                     </div>
-                </div>
+                </div> -->
                 
 
                 </div>

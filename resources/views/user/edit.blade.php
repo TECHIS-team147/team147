@@ -14,6 +14,10 @@
     <title>ユーザー編集</title>
     </head>
     <body>
+    <body>
+    <!-- ナビゲーションを表示 -->
+    @include('parts.navi')
+    
         <h3>ユーザー編集</h3>
         <!-- actionが編集ボタンを押した時に呼ばれるURLとなる -->
         <form action="/user/update" method="post">

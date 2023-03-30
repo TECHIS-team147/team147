@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Account\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+    // return view('welcome');
+// });
 
+Route::get('/account/regist', [AccountController::class, 'regist']);
+Route::post('/account/create', [AccountController::class, 'create']);
+Route::get('/', [AccountController::class, 'showlogin'])->name('showlogin');
+Route::post('/account/login', [AccountController::class, 'login'])->name('login');
 
-Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'home']);
+Route::get('/home/list', [App\Http\Controllers\HomeController::class, 'list']);
+Route::get('/home/detail/{id}', [App\Http\Controllers\HomeController::class, 'detail']);
+Route::get('/home/list', [App\Http\Controllers\HomeController::class, 'index'])
+->name('home/list.index');
+
 Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
 Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update']);
 Route::post('user/delete', [App\Http\Controllers\UserController::class, 'delete'])->name('contacts.delete');
+
+Route::get('/item/itemRegister', [App\Http\Controllers\ItemController::class, 'register_form'])->name('itemRegister');
+Route::get('/item/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit'])->name('edit');
+Route::post('/item/itemEdit',[App\Http\Controllers\ItemController::class, 'itemEdit'])->name('itemEdit');
+Route::post('/item/itemDelete', [App\Http\Controllers\ItemController::class, 'itemDelete'])->name('itemDelete');
+

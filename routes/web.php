@@ -22,6 +22,7 @@ Route::get('/account/regist', [AccountController::class, 'regist']);
 Route::post('/account/create', [AccountController::class, 'create']);
 Route::get('/', [AccountController::class, 'showlogin'])->name('showlogin');
 Route::post('/account/login', [AccountController::class, 'login'])->name('login');
+Route::get('/logout', [AccountController::class, 'logout'])->name('logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'home']);
 Route::get('/home/list', [App\Http\Controllers\HomeController::class, 'list']);

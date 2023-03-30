@@ -32,9 +32,9 @@
  
                 <p>更新日時:{{ $user->updated_at }}
 
-            <p>管理者権限(0:ユーザー/1:管理者)
-                <label for="gender_male"><input type="radio" name="role" value="0" {{ $user->role == '0' ? 'checked' : ''}}>0</label>
-                <label for="gender_woman"><input type="radio" name="role" value="1" {{ $user->role == '1' ? 'checked' : ''}}>1</label>
+            <p>管理者権限
+                <label for="gender_male"><input type="radio" name="role" value="0" {{ $user->role == '0' ? 'checked' : ''}}>0:ユーザー</label>
+                <label for="gender_woman"><input type="radio" name="role" value="1" {{ $user->role == '1' ? 'checked' : ''}}>1:管理者</label>
             </p>
  
             

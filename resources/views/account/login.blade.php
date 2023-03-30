@@ -10,18 +10,18 @@
 </head>
 <body>
     <div class="container text-center" style="max-width:500px;">
-<h1>商品管理システム</h1>
+    <h1>商品管理システム</h1>
         <h3>ログイン</h3>
         <form action="/account/login" method="post">
-        @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
                 @csrf
             <table class="table">
             <tr>

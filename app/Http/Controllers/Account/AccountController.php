@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginFormRequest;
@@ -21,7 +22,7 @@ class AccountController extends Controller
     User::create([
       "name" => $request->name,
       "email" => $request->email,
-      "password" => $request->password,
+      "password" => Hash::make( $request->password),
       "role" => 0,
     ]);
 
@@ -40,11 +41,21 @@ class AccountController extends Controller
     if (Auth::attempt($credentials)) {
       $request->session()->regenerate();
 
-      return redirect('/account/regist')->with('login_success', 'ログイン成功しました');
+      return redirect('/home')->with('login_success', 'ログイン成功しました');
     }
 
     return back()->withErrors([
       'login_error' => 'メールアドレスかパスワードが間違っています。',
     ]);
   }
+  public function logout(Request $request)
+{
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect('/');
+}
 }

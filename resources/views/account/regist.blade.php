@@ -11,7 +11,7 @@
 <body>
 <div class="container text-center" style="max-width:500px;">
 <h1>商品管理システム</h1>
-        <h3>アカウント登録</h3>
+    <h3>アカウント登録</h3>
         <form action="/account/create" method="post">
                 @csrf
             <table class="table">
@@ -24,18 +24,18 @@
             </tr>
             <tr>
                 <th>パスワード</th>
-                <td> <input type="text" name="password" /></td>
+                <td> <input type="password" name="password" /></td>
             </tr>
             <tr>
                 <th>パスワード(確認)</th>
-                <td> <input type="text" name="password" /></td>
+                <td> <input type="password" name="password" /></td>
             </tr>
-                <div>
-                    <input type="submit" value="アカウント登録" />
-                <div>
             </table>
+            <div>
+                <input type="submit" value="アカウント登録" />
+            <div>
         </form>
-        <a href="/">やっぱり登録していた方</a>
+    <a href="/">やっぱり登録していた方</a>
 </div>
 </body>
 </html>

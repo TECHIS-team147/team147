@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Account\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/account/regist', [AccountController::class, 'regist']);
+Route::post('/account/create', [AccountController::class, 'create']);
+Route::get('/', [AccountController::class, 'showlogin'])->name('showlogin');
+Route::post('/account/login', [AccountController::class, 'login'])->name('login');

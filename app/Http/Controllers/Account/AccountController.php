@@ -19,6 +19,18 @@ class AccountController extends Controller
   public function create(Request $request)
   {
 
+    $request->validate([
+      'name' => 'required',
+      'email'=>'required|max:255|email|unique:users,email',
+      'password'=>'required|numeric',
+    ],
+     [
+      'name.required' => '名前は必ず入力してください。',
+      'email.max:255|email|unique:users,email'=>'メールアドレスに間違いがあります。',
+      'email.required' =>'メールアドレスを必ず入力してください。',
+      'password.numeric'=>'パスワードに間違いがあります。',
+      'password.required'=>'パスワードは必ず入力してください。',
+     ]);
     User::create([
       "name" => $request->name,
       "email" => $request->email,

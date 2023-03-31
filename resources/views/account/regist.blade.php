@@ -9,32 +9,41 @@
     <title>アカウント登録</title>
 </head>
 <body>
-<div class="container text-center" style="max-width:500px;">
-<h1>商品管理システム</h1>
-    <h3>アカウント登録</h3>
-        <form action="/account/create" method="post">
+    <div class="container text-center" style="max-width:500px;">
+    <h1>商品管理システム</h1>
+        <h3>アカウント登録</h3>
+            <form action="/account/create" method="post">
+            @if ($errors->any())
+	    <div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif
                 @csrf
-            <table class="table">
-            <tr>
-                <th>名前</th>
-                <td> <input type="text" name="name" /></td>
-            </tr>
-                <th>メールアドレス</th>
-                <td> <input type="text" name="email" /></td>
-            </tr>
-            <tr>
-                <th>パスワード</th>
-                <td> <input type="password" name="password" /></td>
-            </tr>
-            <tr>
-                <th>パスワード(確認)</th>
-                <td> <input type="password" name="password" /></td>
-            </tr>
-            </table>
-            <div>
-                <input type="submit" value="アカウント登録" />
-            <div>
-        </form>
+                <table class="table">
+                    <tr>
+                        <th>名前</th>
+                        <td> <input type="text" name="name" /></td>
+                    </tr>
+                        <th>メールアドレス</th>
+                         <td> <input type="text" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <th>パスワード</th>
+                        <td> <input type="password" name="password" /></td>
+                    </tr>
+                    <tr>
+                        <th>パスワード(確認)</th>
+                        <td> <input type="password" /></td>
+                    </tr>
+                </table>
+                <div>
+                    <input type="submit" value="アカウント登録" />
+                <div>
+            </form>
     <a href="/">やっぱり登録していた方</a>
 </div>
 </body>

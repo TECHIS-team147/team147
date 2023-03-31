@@ -41,8 +41,10 @@ class HomeController extends Controller
         //配列itemsで変数itemsに格納したデータをupdate_atのデータで降順にして一覧表示。検索フォームには入力した値を表示
         return view('home.list', [
              'items' => $items,
-             'keyword' => $keyword
+             'keyword' => $keyword,
+             'types' => Item::TYPES, //Itemモデルからconst TYPESの配列を呼び出し
         ]);
+
         //return view('home.list', compact('items', 'keyword'));
     }
 
@@ -65,9 +67,6 @@ class HomeController extends Controller
         
     // }   
     
-
-
-
     //商品詳細画面を表示
     public function detail(Request $request)
     {
@@ -83,7 +82,10 @@ class HomeController extends Controller
         //dd($items);
 
         //商品詳細画面を表示
-        return view('home.detail', ['item' => $item]);
+        return view('home.detail',[
+          'item' => $item,
+          'types' => Item::TYPES,
+        ]);
         // return view('home.detail',['lists'=>$list] );
     }   
 

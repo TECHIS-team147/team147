@@ -18,29 +18,29 @@
                     </div>
 
                     <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="1">
                     <label class="form-check-label" for="inlineRadio1">カブトムシ</label>
                     </div>
                     <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="2">
                     <label class="form-check-label" for="inlineRadio2">クワガタムシ</label>
                     </div>
                     <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                    <label class="form-check-label" for="inlineRadio2">蝶</label>
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="3">
+                    <label class="form-check-label" for="inlineRadio3">蝶</label>
                     </div>
                     <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                    <label class="form-check-label" for="inlineRadio2">蝉</label>
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="4">
+                    <label class="form-check-label" for="inlineRadio4">蝉</label>
                     </div>
                     <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                    <label class="form-check-label" for="inlineRadio2">バッタ</label>
+                    <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="5">
+                    <label class="form-check-label" for="inlineRadio5">バッタ</label>
                     </div>
                     <br><br>
                     <div class="form-group">
-                    <label>詳細</label>
-                    <input name="detail" type="text" class="form-control" textarea rows="5"></textarea>
+                    <label>詳細</label><br>
+                    <textarea name="detail" cols="30" rows="10"></textarea>
                     </div>
                     <br>
                     </select>

@@ -3,12 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
     //
+
+    public function index(Request $request)
+    {
+        $items =Item::all();
+        // dd($items);
+        // 連想配列を取得する
+        $types = Item::TYPES;
+        return view('item/index',compact('items','types'));   
+
+    }
 
 /**
  * 登録画面表示
@@ -27,11 +37,11 @@ class ItemController extends Controller
     // dd($request);
     //新しくレコードを作成する
     $item = new Item();
-    $item->user_id = $request->user_id;
+    $item->user_id = auth::id();
     $item->name = $request->name;
     $item->type = $request->type;
     $item->detail = $request->detail;
-    $item->image = $request->image;
+    // $item->image = $request->image;
     $item->save();
 
     return redirect('/item/register');
@@ -44,10 +54,12 @@ class ItemController extends Controller
     public function edit(Request $request)
     {
         $item =Item::where('id', '=', $request->id)->first();
-
-        return view('items/edit')->with(
-            'item', $item
-        );
+        // 連想配列を取得する
+        $types = Item::TYPES;
+        return view('item/edit',[
+            'item'=> $item,
+            'types'=> $types
+        ]);
     }
 
 /**
@@ -57,7 +69,7 @@ class ItemController extends Controller
 
         //既存の昆虫レコードを取得して、準備して保存する
         $item = Item::where('id', '=', $request->id)->first();
-        $item->user_id = $request->user_id;
+        // $item->user_id = $request->user_id;
         $item->name = $request->name;
         $item->type = $request->type;
         $item->detail = $request->detail;

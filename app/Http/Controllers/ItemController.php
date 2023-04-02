@@ -34,7 +34,7 @@ class ItemController extends Controller
     $item->image = $request->image;
     $item->save();
 
-    return redirect('/item/top');
+    return redirect('/item/register');
     }
 
 
@@ -43,10 +43,10 @@ class ItemController extends Controller
  */
     public function edit(Request $request)
     {
-        $member =Item::where('id', '=', $request->id)->first();
+        $item =Item::where('id', '=', $request->id)->first();
 
         return view('items/edit')->with(
-            'member', $member
+            'item', $item
         );
     }
 
@@ -56,7 +56,7 @@ class ItemController extends Controller
     public function itemEdit(Request $request){
 
         //既存の昆虫レコードを取得して、準備して保存する
-        $member = Item::where('id', '=', $request->id)->first();
+        $item = Item::where('id', '=', $request->id)->first();
         $item->user_id = $request->user_id;
         $item->name = $request->name;
         $item->type = $request->type;
@@ -64,7 +64,7 @@ class ItemController extends Controller
         $item->image = $request->image;
         $item->save();
     
-        return redirect('/item/top');
+        return redirect('/item/register');
     
         }
 /**
@@ -72,10 +72,10 @@ class ItemController extends Controller
  */
         public function itemDelete(Request $request){
             //既存の昆虫レコードを取得して、削除する
-            $member = Item::where('id', '=', $request->id)->first();
-            $member->delete();
+            $item = Item::where('id', '=', $request->id)->first();
+            $item->delete();
         
-            return redirect('/item/top');
+            return redirect('/item/register');
 
             }
 

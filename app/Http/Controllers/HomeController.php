@@ -89,10 +89,4 @@ class HomeController extends Controller
         // return view('home.detail',['lists'=>$list] );
     }   
 
-
-
-
-
-
-
 }

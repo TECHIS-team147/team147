@@ -36,14 +36,16 @@
                     <th>更新日時</th>
                     <th></th>
                 </thead>
-                @foreach($items as $item)   <!-- foreachでの配列変数名itemsに変数名itemとしてデータ格納される -->
+                @foreach($items as $item)   <!-- foreachで値を取り出したい配列変数名itemsから変数名itemとしてデータが取り出される -->
                     <tr class="text-aline=left">
-                        <td>{{$item->id}}</td> <!-- 変数名itemとして格納されているデータからidを取得 -->
-                        <td>{{$item->name}}</td>
-                        <td>{{$types[$item->type]}}</td>
-                        <td>{!! nl2br($item->detail) !!}</td>
-                        <td>{{$item->updated_at}}</td>
-                        <td class="text-center"><a href="/home/detail/{{$item->id}}">詳細</a></td>
+
+                        <td>{{$item->id}}</td>               <!-- 変数名itemとして取り出されたデータからidを取得 -->
+                        <td>{{$item->name}}</td>             <!-- 変数名itemとして取り出されたデータからnameを取得 -->
+                        <td>{{$types[$item->type]}}</td>     <!-- 変数名itemとして取り出されたデータからtypeを取得し、配列変数名typesによって取得したtypeの数値を文字列にして取得 -->
+                        <td>{!! nl2br($item->detail) !!}</td><!-- 変数名itemとして取り出されたデータからdetailを取得し、nl2br関数でデータベースに入力した通りに改行 -->
+                        <td>{{$item->updated_at}}</td>       <!-- 変数名itemとして取り出されたデータからupdated_atを取得 -->
+                        <td class="text-center"><a href="/home/detail/{{$item->id}}">詳細</a></td><!-- 詳細をクリックで/home/detail/{{$item->id}}へ遷移 -->
+
                     </tr>
                 @endforeach
                 

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {   
     use HasFactory;
+
     protected $fillable = [
         'user_id',
         'name',
@@ -23,5 +24,6 @@ class Item extends Model
         4=>'蝉',
         5=>'バッタ'
     ];
+
 }
 

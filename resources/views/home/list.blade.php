@@ -9,12 +9,13 @@
     <title>商品一覧画面</title>
     <link rel="stylesheet" href="{!! asset('css/style.css') !!}">
 </head>
-<body>
+<body id="page_top"> 
+
     <!-- ナビゲーションを表示 -->
     @include('parts.navi')  
     <!-- <div class="">商品一覧画面</div>-->
 
-    <div class="container"> 
+    <div class="container">     
 
         <!-- 検索窓を実装 -->
         <div>
@@ -49,7 +50,12 @@
                 
             </table>
         </div>    
-    </div>  
+    </div> 
+    
+    <!-- TOPに戻るボタンを実装-->
+    <div class="row">
+        <a href="#page_top" class="page_top_btn">トップへ戻る</a>
+    </div>
 
 </body>
 </html>

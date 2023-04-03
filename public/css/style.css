@@ -1,7 +1,13 @@
 
+   /* CSSコード */
+html{
+    scroll-behavior: smooth
+}
 
-.table {
 
+.page_top_btn {
+    text-align: center;
+    margin: 5px 10px 10px 5px
 }
 
 

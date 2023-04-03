@@ -27,12 +27,16 @@ class HomeController extends Controller
         //クエリビルダでデータベースからitemsテーブルのデータを変数queryに格納
         $query = DB::table("items");
 
+        // モデルの Item.php の type の値を検索（array_searchで、入力されたkeywordと同じ文字列を検索し数値の方を$typeへ格納）
+        $type = array_search($keyword, Item::TYPES);
+
         //検索フォームが空でない場合（検索フォームにkeywordが入力されたら）、
         //nameカラム、typeカラム、detailカラムで前方・後方・部分一致するものを検索して変数queryへ格納  
         if(!empty($keyword)) {
             $query->where('name', 'LIKE', "%{$keyword}%")  //LIKEを用いる場合は第３引数は""で囲む
-                ->orWhere('type', 'LIKE', "%{$keyword}%")
-                ->orWhere('detail', 'LIKE', "%{$keyword}%");
+        //       ->orWhere('type', 'LIKE', "%{$keyword}%")
+                ->orWhere('detail', 'LIKE', "%{$keyword}%")
+                ->orWhere('type', $type);
         }
         
         //変数queryからデータを取り出し変数itemsに格納する。ただし、update_atのデータで降順とする。

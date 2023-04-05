@@ -34,6 +34,26 @@ class ItemController extends Controller
  */
     public function itemRegister(Request $request)
     {
+        // rule
+        $rule=[
+            'name' => 'required|max:100',
+            'type' => 'required',
+            'detail' => 'required|max:500',
+        ];
+        // nameのどんなruleに対して、適用されなかった場合どんなmessageを設定するか
+        $msg=[
+            'name.required' => '商品名は必須です',
+            'name.max' => '100文字以内で入力してください',
+            'type.required' => '種別の選択は必須です',
+            'detail.required' => '詳細は必須です',
+            'detail.max' => '500文字以内で入力してください'
+        ];
+
+        $request->validate($rule, $msg);
+
+        $image = base64_encode(file_get_contents($request->image->getRealPath()));
+
+
     // dd($request);
     //新しくレコードを作成する
     $item = new Item();
@@ -41,11 +61,37 @@ class ItemController extends Controller
     $item->name = $request->name;
     $item->type = $request->type;
     $item->detail = $request->detail;
-    // $item->image = $request->image;
+    $item->image = $image;
+
     $item->save();
 
     return redirect('/item/register');
     }
+
+    public function upload(Request $request)
+    {
+        // ディレクトリ名
+        $dir = 'img';
+
+        // アップロードされたファイル名を取得
+        $file_name = $request->file('image')->getClientOriginalName();
+
+        // 取得したファイル名で保存
+        $request->file('image')->storeAs('public/' . $dir, $file_name);
+
+        return redirect('/item/register');
+    }
+
+    // public function upload(Request $request)
+    // {
+    //     // ディレクトリ名
+    //     $dir = 'img';
+
+    //     // imgディレクトリに画像を保存
+    //     $request->file('image')->store('public/' . $dir);
+
+    //     return redirect('/item/register');
+    // }
 
 
 /**
@@ -67,14 +113,35 @@ class ItemController extends Controller
  */
     public function itemEdit(Request $request){
 
+        // ruleで必須項目や制限文字数などを設定する
+        $rule=[
+            'name' => 'required|max:100',
+            'type' => 'required',
+            'detail' => 'required|max:500',
+        ];
+        // nameのどんなruleに対して、適用されなかった場合どんなmessageを設定するか
+        $msg=[
+            'name.required' => '商品名は必須です',
+            'name.max' => '100文字以内で入力してください',
+            'type.required' => '種別の選択は必須です',
+            'detail.required' => '詳細は必須です',
+            'detail.max' => '500文字以内で入力してください'
+        ];
+
+        $request->validate($rule, $msg);
+
         //既存の昆虫レコードを取得して、準備して保存する
         $item = Item::where('id', '=', $request->id)->first();
         // $item->user_id = $request->user_id;
         $item->name = $request->name;
         $item->type = $request->type;
         $item->detail = $request->detail;
-        $item->image = $request->image;
         $item->save();
+
+        if($image=$request->file('image')){
+            $path=$image->store('public');
+            $item->image=$path;
+        }
     
         return redirect('/item/register');
     

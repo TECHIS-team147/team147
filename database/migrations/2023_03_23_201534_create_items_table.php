@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->string('name',100);
             $table->smallinteger('type');
             $table->string('detail',500);
-            $table->text('image')->nullable();
+            $table->mediumText('image')->nullable();
             $table->timestamps();
         });
     }

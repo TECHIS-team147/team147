@@ -1,4 +1,4 @@
-@extends('item.layouts.app')
+@extends('item.layouts.app2')
 @section('content')
 <!DOCTYPE html>
 <html lang="ja">
@@ -59,7 +59,10 @@
           <div>
             <label for="formFileMultiple" class="form-label">画像</label>
             <input class="form-control" type="file" accept="image/*" id="formFileMultiple" multiple value ="{{$item->image}}">
-          </div>
+          </div><br>
+          @if(! is_null($item->image))
+            <img src="{{ $item->image }}">
+            @endif
           <br><br>
 
           <div class="form-group" style="margin: 20px">
@@ -76,6 +79,8 @@
             <button type ="submit" class="btn btn-secondary">削除</button>
           </div>
       </form>
+      
+      <a href="/item/index">一覧へ戻る</a>
 
        
          

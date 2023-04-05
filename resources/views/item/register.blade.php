@@ -1,5 +1,15 @@
-@extends('item.layouts.app')
+@extends('item.layouts.app2')
 @section('content')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+          <title>Document</title>
+</head>
+<body>
     <div class="form">
         <div class="form_title form-select-lg">昆虫登録画面</div><br>
             <div class="form_content">
@@ -52,7 +62,7 @@
 
                     <div class="form-group">
                         <label>詳細</label><br>
-                        <textarea name="detail" cols="60" rows="10" value="{{ old('detail') }}">{{ old('detail') }}</textarea>
+                        <textarea name="detail" cols="60" rows="10" placeholder="500文字以内で入力してください" value="{{ old('detail') }}">{{ old('detail') }}</textarea>
                     </div>
                     <ul>
                         @if ($errors->has('detail'))
@@ -64,16 +74,19 @@
                     <div>
                         <label for="formFileMultiple" class="form-label">画像</label>
                         <input class="form-control" name="image" type="file" accept="image/*" id="formFileMultiple" multiple value="{{ old('image') }}">
-                    </div>
-
-                    <br>
+                    </div><br><br>
 
                     <div>
                         <input type="submit" name="" value="登録">
-                    </div>
+                    </div><br>
+
+                    <a href="/item/index">一覧へ戻る</a>
 
                 </div>
-          </form>    
+          </form>  
+            
         </div>
     </div> 
+</body>
+</html>
 @endsection

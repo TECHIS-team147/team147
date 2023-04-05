@@ -15,6 +15,7 @@
     <table class="table table-bordered">
                 <thead>
                     <tr>
+                    <th>管理者権限</th>   
                     <th>ID</th>
                     <th>名前</th>
                     <th>メールアドレス</th>
@@ -25,6 +26,7 @@
                 </thead>
                 @foreach($users as $user)
                 <tr>
+                    <td>{{$user->role}}</td>
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>

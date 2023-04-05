@@ -29,6 +29,8 @@ Route::get('/home/detail/{id}', [App\Http\Controllers\HomeController::class, 'de
 Route::get('/home/list', [App\Http\Controllers\HomeController::class, 'index'])
 ->name('home/list.index');
 
+Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
+
 Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
 Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update']);
 Route::post('user/delete', [App\Http\Controllers\UserController::class, 'delete'])->name('contacts.delete');

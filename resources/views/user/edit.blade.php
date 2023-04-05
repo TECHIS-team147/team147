@@ -17,12 +17,12 @@
     <body>
     <!-- ナビゲーションを表示 -->
     @include('parts.navi')
-    
+
         <h3>ユーザー編集</h3>
         <!-- actionが編集ボタンを押した時に呼ばれるURLとなる -->
         <form action="/user/update" method="post">
             @csrf
-            <p> ID:
+                <p> ID:
                 {{ $user->id }}
                 <input type="hidden" name="id" value="{{ $user->id }}"></p>
 
@@ -37,19 +37,21 @@
                 <p>更新日時:{{ $user->updated_at }}
 
             <p>管理者権限
+
+            <!--input type="radio" name="role" value="{{ $user->role }}"> --> </p>
                 <label for="gender_male"><input type="radio" name="role" value="0" {{ $user->role == '0' ? 'checked' : ''}}>0:ユーザー</label>
                 <label for="gender_woman"><input type="radio" name="role" value="1" {{ $user->role == '1' ? 'checked' : ''}}>1:管理者</label>
             </p>
  
             
             
-            <p><input type="submit" value="編集"></p>
+            <p><input type="submit" class="btn btn-danger" value="編集"></p>
         </form>
         <!-- 削除のフォームは別で用意する -->
         <form action="/user/delete" method="post">
             @csrf
             <input type="hidden" name="id" value="{{ $user->id }}"></p>
-            <p><input type="submit" value="削除"></p>
+            <p><input type="submit" class="btn btn-primary" value="削除"></p>
         </form>
         <!-- エラーメッセージ表示 -->
         @if ($errors->any())

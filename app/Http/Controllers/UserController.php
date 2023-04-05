@@ -25,23 +25,27 @@ class UserController extends Controller
         // Userモデルを呼び出して，更新処理
         // Viewであるedit.blade.phpを呼び出す処理
         //return view('user.index');
+
+        //エラーメッセージ
     public function update(Request $request)
     {
         $rule=[
             'name' => 'required|max:100',
-            'email' => 'required|email',
+            'email' => 'required|email|max:100',
         ];
         $msg=[
             'name.required' => '名前は必須です。',
             'name.max' => '名前の文字数は100文字以内です。',
             'email.required'  => 'メールは必須項目です。',
             'email.email'  => 'メールの形式で入力してください。',
+            'email.email' => 'メールの文字数は100文字以内です。',
         ];
         $request->validate($rule,$msg);
 
         $user = User::find($request->input('id'));
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        $user->role = $request->input('role');
         $user->save();
     return redirect('/user');
 

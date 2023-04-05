@@ -11,12 +11,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/home/list">商品一覧</a>
                 </li>
+                @can('admin')
                 <li class="nav-item">
                     <a class="nav-link" href="/user">ユーザー管理</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/item">商品管理</a>
                 </li>
+                @endcan
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">ログアウト</a>
                 </li>

@@ -10,6 +10,7 @@
     <title>管理者一覧</title>
 </head>
 <body>
+@include('parts.navi')
     <H1>管理者一覧</H1>
     
     <table class="table table-bordered">

@@ -32,10 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
     ->name('home/list.index');
 });
 
-
-
     // 管理者ユーザーのみ
 Route::group(['middleware' => ['auth', 'can:admin']], function () {
+    Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
     Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
     Route::post('/user/update', [App\Http\Controllers\UserController::class, 'update']);
     Route::post('user/delete', [App\Http\Controllers\UserController::class, 'delete'])->name('contacts.delete');

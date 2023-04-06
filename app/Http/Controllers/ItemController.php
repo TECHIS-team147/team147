@@ -169,5 +169,13 @@ class ItemController extends Controller
             }
 
 
-
+            // 一覧から種別ごとで検索かける 作成中
+            // public function select(){
+            //     $item = Item::where('type', '=', '1')->get();
+            //     $types = Item::TYPES;
+            //     return view('item/index',[
+            //         'item'=> $item,
+            //         'types'=> $types
+            //     ]);
+            // }
 }

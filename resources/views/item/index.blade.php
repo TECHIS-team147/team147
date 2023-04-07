@@ -1,7 +1,7 @@
 @extends('item.layouts.app')
 @section('content')
 <a href="/item/itemRegister">新規登録</a>
-<table>
+<table class="table">
           <tr>
                     <th>ID</th>
                     <th>名前</th>

@@ -153,9 +153,10 @@ return [
     |
     */
 
-    'attributes' => [
-        'email'=>'メールアドレス',
-        'password'=>'パスワード',
-    ],
+    // 'attributes' => [
+    //     'email'=>'メールアドレス',
+    //     'password'=>'パスワード',
+    //     'type' => '種別',
+    // ],
 
 ];

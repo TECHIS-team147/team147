@@ -28,7 +28,10 @@
                         <tr><th>名前</th><td>{{$item->name}}</td></tr>
                         <tr><th>種別</th><td>{{$types[$item->type]}}</td></tr>          
                         <tr><th>概要</th><td>{!! nl2br($item->detail) !!}</td></tr> 
-                        <tr><th>写真</th><td>{{$item->image}}</td></tr>
+                        <tr><th>写真</th><td>@if(! is_null($item->image))
+                                            <img src="{{ $item->image }}">
+                                            @endif
+                                            </td></tr>
                     </table>
                 </form>
             </div>             

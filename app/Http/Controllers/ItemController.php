@@ -12,7 +12,12 @@ class ItemController extends Controller
 
     public function index(Request $request)
     {
-        $items =Item::all();
+        // dd($request);
+        if($request->type){
+            $items =Item::where('type', $request->type)->get();
+        }
+        else{ $items =Item::all();}
+       
         // dd($items);
         // 連想配列を取得する
         $types = Item::TYPES;
@@ -39,6 +44,7 @@ class ItemController extends Controller
             'name' => 'required|max:100',
             'type' => 'required',
             'detail' => 'required|max:500',
+            'image' => 'max:60',
         ];
         // nameのどんなruleに対して、適用されなかった場合どんなmessageを設定するか
         $msg=[
@@ -46,14 +52,18 @@ class ItemController extends Controller
             'name.max' => '100文字以内で入力してください',
             'type.required' => '種別の選択は必須です',
             'detail.required' => '詳細は必須です',
-            'detail.max' => '500文字以内で入力してください'
+            'detail.max' => '500文字以内で入力してください',
+            'image.max' => '画像容量が60KBを超えています',
         ];
 
         $request->validate($rule, $msg);
+
+        if($request->image) {
         $path = $request->image->getRealPath();
         $type = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         $image = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        }
 
         // $image = base64_encode(file_get_contents($request->image->getRealPath()));
 
@@ -103,6 +113,7 @@ class ItemController extends Controller
  */
     public function edit(Request $request)
     {
+        
         $item =Item::where('id', '=', $request->id)->first();
         // 連想配列を取得する
         $types = Item::TYPES;
@@ -122,6 +133,7 @@ class ItemController extends Controller
             'name' => 'required|max:100',
             'type' => 'required',
             'detail' => 'required|max:500',
+            'image' => 'max:60',
         ];
         // nameのどんなruleに対して、適用されなかった場合どんなmessageを設定するか
         $msg=[
@@ -129,7 +141,8 @@ class ItemController extends Controller
             'name.max' => '100文字以内で入力してください',
             'type.required' => '種別の選択は必須です',
             'detail.required' => '詳細は必須です',
-            'detail.max' => '500文字以内で入力してください'
+            'detail.max' => '500文字以内で入力してください',
+            'image.max' => '画像容量が60KBを超えています',
         ];
 
         $request->validate($rule, $msg);
@@ -142,10 +155,12 @@ class ItemController extends Controller
         $item->type = $request->type;
         $item->detail = $request->detail;
 
+        if($request->image){
         $path = $request->image->getRealPath();
         $type = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         $item->image = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        }
         $item->save();
 
         // if($image=$request->file('image')){
@@ -168,14 +183,4 @@ class ItemController extends Controller
 
             }
 
-
-            // 一覧から種別ごとで検索かける 作成中
-            // public function select(){
-            //     $item = Item::where('type', '=', '1')->get();
-            //     $types = Item::TYPES;
-            //     return view('item/index',[
-            //         'item'=> $item,
-            //         'types'=> $types
-            //     ]);
-            // }
 }

@@ -10,6 +10,7 @@
           <title>Document</title>
 </head>
 <body>
+<div class="m-5">
     <div class="form">
         <div class="form_title form-select-lg">昆虫登録画面</div><br>
             <div class="form_content">
@@ -64,16 +65,22 @@
                         <label>詳細</label><br>
                         <textarea name="detail" cols="60" rows="10" placeholder="500文字以内で入力してください" value="{{ old('detail') }}">{{ old('detail') }}</textarea>
                     </div>
-                    <ul>
-                        @if ($errors->has('detail'))
-                            <li>{{$errors->first('detail')}}</li>
-                        @endif
-                    </ul>
+                        <ul>
+                            @if ($errors->has('detail'))
+                                <li>{{$errors->first('detail')}}</li>
+                            @endif
+                        </ul>
                     <br>
 
                     <div>
                         <label for="formFileMultiple" class="form-label">画像</label>
                         <input class="form-control" name="image" type="file" accept="image/*" id="formFileMultiple" multiple value="{{ old('image') }}">
+
+                        <ul>  
+                            @if ($errors->has('image'))
+                                <li>{{$errors->first('image')}}</li>
+                                @endif
+                        </ul>
                     </div><br><br>
 
                     <div>
@@ -87,6 +94,7 @@
             
         </div>
     </div> 
+</div>
 </body>
 </html>
 @endsection

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ asset('css/style_at.css') }}">
+
 <div class="list group">
 <div class="sidebar_title">昆虫一覧</div><br>
 

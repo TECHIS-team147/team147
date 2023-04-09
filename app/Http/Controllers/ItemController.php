@@ -16,7 +16,7 @@ class ItemController extends Controller
         if($request->type){
             $items =Item::where('type', $request->type)->get();
         }
-        else{ $items =Item::all();}
+        else{$items =Item::all();}
        
         // dd($items);
         // 連想配列を取得する
@@ -82,7 +82,8 @@ class ItemController extends Controller
         $item->save();
 
         return redirect('/item');
-        }
+
+    }
 
     // public function upload(Request $request)
     // {

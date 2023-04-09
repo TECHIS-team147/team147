@@ -19,3 +19,11 @@ li{
 .label{
     font-size: 20px;
 }
+
+.sidebar_title{
+    font-size: 22px;
+    color: #FF6666;
+}
+a{
+    color: #6699FF;
+}

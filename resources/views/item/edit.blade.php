@@ -15,14 +15,14 @@
 <div class="m-5">
 <div class="form">
   <h2>昆虫 商品編集画面 {{$item->id}}</h2>
-    <form action ="{{ route('itemEdit') }}" method ="post" enctype="multipart/form-data">
+    <form action ="{{ route('itemEdit') }}" method ="post" enctype="multipart/form-data"><br>
         {{ csrf_field() }}
       
           <input type="hidden" name="id" value = "{{$item->id}}">
 
           <div class="col-xs-4">
             <label>名前</label><br>
-            <input name="name" type="text" class="form-control" value="{{ old('name', $item->name) }}">
+            <input name="name" type="text" class="form-control" value="{{ old('name', $item->name) }}"><br>
               <!-- <input class="form-control" type="text" name="name" value ="{{$item->name}}"> -->
                 <ul>
                   @if ($errors->has('name'))
@@ -64,9 +64,8 @@
             <label for="formFileMultiple" class="form-label">画像</label>
             <input class="form-control" type="file" name="image" accept="image/*" id="formFileMultiple" multiple value ="{{$item->image}}" onchange="previewImage(this);">
           </div><br>
-        <p id="preview_text"></p>
-          <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:400px;">
-          <br><p id="preview_text_before"></p>
+
+          <p id="preview_text_before"></p>
               <ul>
               @if ($errors->has('image'))
                 <li>{{$errors->first('image')}}</li>
@@ -75,8 +74,11 @@
               @if(! is_null($item->image))
                 <img src="{{ $item->image }}">
                 @endif
+                <br><br>
+                <p id="preview_text"></p>
+          <img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:350px;">
               
-          <br><br>
+          <br>
 
           <div class="form-group" style="margin: 20px">
             <button type ="submit" class="btn btn-secondary">保存</button>
@@ -93,7 +95,7 @@
           </div>
       </form>
       
-      <a href="/item/index">一覧へ戻る</a>
+      <a href="/item">一覧へ戻る</a>
 
        
          
@@ -108,8 +110,8 @@ function previewImage(obj)
 		document.getElementById('preview').src = fileReader.result;
 	});
 	fileReader.readAsDataURL(obj.files[0]);
-  document.getElementById('preview_text').innerHTML = "変更後の画像";
   document.getElementById('preview_text_before').innerHTML = "変更前の画像";
+  document.getElementById('preview_text').innerHTML = "変更後の画像";
 }
 </script>   
 

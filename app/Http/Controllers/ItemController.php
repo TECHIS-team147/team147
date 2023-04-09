@@ -64,23 +64,25 @@ class ItemController extends Controller
         $data = file_get_contents($path);
         $image = 'data:image/' . $type . ';base64,' . base64_encode($data);
         }
-
+    
         // $image = base64_encode(file_get_contents($request->image->getRealPath()));
 
 
-    // dd($request);
-    //新しくレコードを作成する
-    $item = new Item();
-    $item->user_id = auth::id();
-    $item->name = $request->name;
-    $item->type = $request->type;
-    $item->detail = $request->detail;
-    $item->image = $image;
+        // dd($request);
+        //新しくレコードを作成する
+        $item = new Item();
+        $item->user_id = auth::id();
+        $item->name = $request->name;
+        $item->type = $request->type;
+        $item->detail = $request->detail;
+        if($request->image) {
+            $item->image = $image;
+            }
 
-    $item->save();
+        $item->save();
 
-    return redirect('/item/register');
-    }
+        return redirect('/item');
+        }
 
     // public function upload(Request $request)
     // {
@@ -168,7 +170,7 @@ class ItemController extends Controller
         //     $item->image=$path;
         // }
     
-        return redirect('/item/register');
+        return redirect('/item');
     
         }
 /**
@@ -179,7 +181,7 @@ class ItemController extends Controller
             $item = Item::where('id', '=', $request->id)->first();
             $item->delete();
         
-            return redirect('/item/register');
+            return redirect('/item');
 
             }
 

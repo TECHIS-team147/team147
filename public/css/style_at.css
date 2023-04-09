@@ -5,3 +5,17 @@ h2{
     margin:20px;
     
 }
+
+.form_title{
+    font-size: 30px;
+    font-family: fantasy;
+}
+
+li{
+    font-family: sans-serif;
+    color: red;
+}
+
+.label{
+    font-size: 20px;
+}

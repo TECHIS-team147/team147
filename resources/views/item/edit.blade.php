@@ -58,7 +58,7 @@
           
           <div>
             <label for="formFileMultiple" class="form-label">画像</label>
-            <input class="form-control" type="file" accept="image/*" id="formFileMultiple" multiple value ="{{$item->image}}">
+            <input class="form-control" name="image" type="file" accept="image/*" id="formFileMultiple" multiple value ="{{$item->image}}">
           </div><br>
           @if(! is_null($item->image))
             <img src="{{ $item->image }}">

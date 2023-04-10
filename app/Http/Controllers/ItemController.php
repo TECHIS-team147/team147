@@ -50,11 +50,15 @@ class ItemController extends Controller
         ];
 
         $request->validate($rule, $msg);
+        //dd($request);
+        
+        $image=null;
+        if($request->image){
         $path = $request->image->getRealPath();
         $type = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         $image = 'data:image/' . $type . ';base64,' . base64_encode($data);
-
+        }
         // $image = base64_encode(file_get_contents($request->image->getRealPath()));
 
 
@@ -142,10 +146,14 @@ class ItemController extends Controller
         $item->type = $request->type;
         $item->detail = $request->detail;
 
+        //dd($request);
+        $image=null;
+        if($request->image){
         $path = $request->image->getRealPath();
         $type = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         $item->image = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        }
         $item->save();
 
         // if($image=$request->file('image')){

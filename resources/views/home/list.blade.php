@@ -21,8 +21,8 @@
         <div>
         <form action="{{ route('home/list.index') }}" method="GET" >
             @csrf
-            <div ><input type="text" class="col-11" name="keyword" value="{{ $keyword }}">
-            <input type="submit" class="col"value="検索"></div>
+            <div ><input type="text" class="col-5" name="keyword" value="{{ $keyword }}">
+            <input type="submit" class="col-1" value="検索"></div>        
         </form>
         </div><br>
 

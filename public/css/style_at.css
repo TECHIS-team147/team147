@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+h2{
+    width:100%;
+    margin:20px;
+    
+}
+
+.form_title{
+    font-size: 30px;
+    font-family: fantasy;
+}
+
+li{
+    font-family: sans-serif;
+    color: red;
+}
+
+.label{
+    font-size: 20px;
+}
+
+.sidebar_title{
+    font-size: 22px;
+    color: #FF6666;
+}
+a{
+    color: #6699FF;
+}

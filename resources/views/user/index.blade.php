@@ -16,7 +16,7 @@
     <table class="table table-bordered">
                 <thead>
                     <tr>
-                    <th>管理者権限</th>   
+                    <th>管理者権限(0:ユーザー1:管理者)</th>   
                     <th>ID</th>
                     <th>名前</th>
                     <th>メールアドレス</th>

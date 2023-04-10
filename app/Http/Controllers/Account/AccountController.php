@@ -22,14 +22,20 @@ class AccountController extends Controller
     $request->validate([
       'name' => 'required',
       'email'=>'required|max:255|email|unique:users,email',
-      'password'=>'required|numeric',
+      'password'=>'required|numeric|confirmed',
+      'password_confirmation'=>'required|numeric',
     ],
      [
       'name.required' => '名前は必ず入力してください。',
       'email.max:255|email|unique:users,email'=>'メールアドレスに間違いがあります。',
+      'email.'=>'そのメールアドレスは既に使用されています。',
       'email.required' =>'メールアドレスを必ず入力してください。',
-      'password.numeric'=>'パスワードに間違いがあります。',
+      'password.numeric'=>'パスワードに間違いがあります。数字のみで入力してください。',
       'password.required'=>'パスワードは必ず入力してください。',
+      'password.confirmed'=>'パスワードが一致しません。',
+      'password_confirmation.required'=>'パスワード(確認)は必ず入力してください。',
+      'password_confirmation.numeric'=>'パスワードは数字のみで入力してください。',
+
      ]);
     User::create([
       "name" => $request->name,

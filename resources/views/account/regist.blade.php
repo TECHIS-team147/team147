@@ -37,7 +37,7 @@
                     </tr>
                     <tr>
                         <th>パスワード(確認)</th>
-                        <td> <input type="password" /></td>
+                        <td> <input type="password" name="password_confirmation"/></td>
                     </tr>
                 </table>
                 <div>

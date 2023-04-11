@@ -90,7 +90,7 @@
                         <input type="submit" name="" value="登録">
                     </div><br>
 
-                    <a href="/item/index">一覧へ戻る</a>
+                    <a href="/item">一覧へ戻る</a>
 
                 </div>
           </form>  

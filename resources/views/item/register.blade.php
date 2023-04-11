@@ -13,7 +13,7 @@
 <body>
 <div class="m-5">
     <div class="form">
-        <div class="form_title form-select-lg">昆虫 商品新規登録画面</div><br>
+        <div class="form_title form-select-lg">商品登録画面</div><br>
             <div class="form_content">
                 <form action = "{{ route('itemRegister') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
@@ -90,7 +90,7 @@
                         <input type="submit" name="" value="登録">
                     </div><br>
 
-                    <a href="/item/index">一覧へ戻る</a>
+                    <a href="/item">一覧へ戻る</a>
 
                 </div>
           </form>  

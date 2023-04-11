@@ -14,7 +14,7 @@
 
 <div class="m-5">
 <div class="form">
-  <h2>昆虫 商品編集画面 {{$item->id}}</h2>
+  <h2>商品編集画面 {{$item->id}}</h2>
     <form action ="{{ route('itemEdit') }}" method ="post" enctype="multipart/form-data"><br>
         {{ csrf_field() }}
       

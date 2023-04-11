@@ -20,18 +20,38 @@
             <div class="col-2">
             </div>     
             <div class="col-8">
-                <h4 class="detail_header text-center align-center">商品詳細 商品ＩＤ：{{$item->id}}</h4>
+                <h4 class="detail_header text-center">商品詳細 商品ＩＤ：{{$item->id}}</h4>
                 <p class="">更新日時  {{$item->updated_at}}</p>
                 <form action="/home/detail" method="post" class="">
                     @csrf
                     <table class="table table-bordered">
-                        <tr><th class="text-center">名前</th><td><p class="text-start">{{$item->name}}</p></td></tr>
-                        <tr><th class="text-center">種別</th><td><p class="text-start">{{$types[$item->type]}}</p></td></tr>          
-                        <tr><th class="text-center">概要</th><td><p class="text-start">{!! nl2br($item->detail) !!}</p></td></tr> 
+                        <tr><th class="text-center">名前</th>
+                            <td><p class="text-start">
+                                <?php $name = htmlspecialchars("{$item->name}",ENT_QUOTES,"UTF-8");
+                                echo $name;
+                                ?></p>
+                            </td>
+                        </tr>
+                        <tr><th class="text-center">種別</th>
+                            <td><p class="text-start">
+                                <?php $type = htmlspecialchars("{$types[$item->type]}",ENT_QUOTES,"UTF-8");
+                                echo $type;
+                                ?></p>
+                            </td>
+                        </tr>          
+                        <tr><th class="text-center">概要</th>
+                            <td><p class="text-start">
+                                <?php $detail =htmlspecialchars("{$item->detail}",ENT_QUOTES,"UTF-8");
+                                echo nl2br($detail) ;
+                                ?></p>
+                            </td>
+                        </tr> 
                         <tr><th class="text-center">写真</th>
                             <td class="table-img">
                                 @if(! is_null($item->image))
                                 <img src="{{ $item->image }}">
+                                @else
+                                <p>画像はありません</p>
                                 @endif
                             </td>
                         </tr>
@@ -43,8 +63,6 @@
             </div>
         </div>
     </div>
-
-
 </body>
 </html>
 

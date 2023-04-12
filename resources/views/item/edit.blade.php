@@ -11,8 +11,8 @@
 </head>
 <body>
 <div class="form">
-  <h2 style="margin: 50px">昆虫 商品編集画面 {{$item->id}}</h2>
-    <form action ="{{ route('itemEdit') }}" method ="post" enctype="multipart/form-data">
+  <h2>商品編集画面 {{$item->id}}</h2>
+    <form action ="{{ route('itemEdit') }}" method ="post" enctype="multipart/form-data"><br>
         {{ csrf_field() }}
       
           <input type="hidden" name="id" value = "{{$item->id}}">

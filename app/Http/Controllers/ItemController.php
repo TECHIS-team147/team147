@@ -12,7 +12,12 @@ class ItemController extends Controller
 
     public function index(Request $request)
     {
-        $items =Item::all();
+        // dd($request);
+        if($request->type){
+            $items =Item::where('type', $request->type)->get();
+        }
+        else{$items =Item::all();}
+       
         // dd($items);
         // 連想配列を取得する
         $types = Item::TYPES;
@@ -39,6 +44,7 @@ class ItemController extends Controller
             'name' => 'required|max:100',
             'type' => 'required',
             'detail' => 'required|max:500',
+            'image' => 'max:60',
         ];
         // nameのどんなruleに対して、適用されなかった場合どんなmessageを設定するか
         $msg=[
@@ -46,34 +52,37 @@ class ItemController extends Controller
             'name.max' => '100文字以内で入力してください',
             'type.required' => '種別の選択は必須です',
             'detail.required' => '詳細は必須です',
-            'detail.max' => '500文字以内で入力してください'
+            'detail.max' => '500文字以内で入力してください',
+            'image.max' => '画像容量が60KBを超えています',
         ];
 
         $request->validate($rule, $msg);
-        //dd($request);
-        
-        $image=null;
-        if($request->image){
+
+        if($request->image) {
         $path = $request->image->getRealPath();
         $type = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         $image = 'data:image/' . $type . ';base64,' . base64_encode($data);
         }
+    
         // $image = base64_encode(file_get_contents($request->image->getRealPath()));
 
 
-    // dd($request);
-    //新しくレコードを作成する
-    $item = new Item();
-    $item->user_id = auth::id();
-    $item->name = $request->name;
-    $item->type = $request->type;
-    $item->detail = $request->detail;
-    $item->image = $image;
+        // dd($request);
+        //新しくレコードを作成する
+        $item = new Item();
+        $item->user_id = auth::id();
+        $item->name = $request->name;
+        $item->type = $request->type;
+        $item->detail = $request->detail;
+        if($request->image) {
+            $item->image = $image;
+            }
 
-    $item->save();
+        $item->save();
 
-    return redirect('/item/register');
+        return redirect('/item'); 
+
     }
 
     // public function upload(Request $request)
@@ -107,6 +116,7 @@ class ItemController extends Controller
  */
     public function edit(Request $request)
     {
+        
         $item =Item::where('id', '=', $request->id)->first();
         // 連想配列を取得する
         $types = Item::TYPES;
@@ -126,6 +136,7 @@ class ItemController extends Controller
             'name' => 'required|max:100',
             'type' => 'required',
             'detail' => 'required|max:500',
+            'image' => 'max:60',
         ];
         // nameのどんなruleに対して、適用されなかった場合どんなmessageを設定するか
         $msg=[
@@ -133,7 +144,8 @@ class ItemController extends Controller
             'name.max' => '100文字以内で入力してください',
             'type.required' => '種別の選択は必須です',
             'detail.required' => '詳細は必須です',
-            'detail.max' => '500文字以内で入力してください'
+            'detail.max' => '500文字以内で入力してください',
+            'image.max' => '画像容量が60KBを超えています',
         ];
 
         $request->validate($rule, $msg);
@@ -146,8 +158,6 @@ class ItemController extends Controller
         $item->type = $request->type;
         $item->detail = $request->detail;
 
-        //dd($request);
-        $image=null;
         if($request->image){
         $path = $request->image->getRealPath();
         $type = pathinfo($path, PATHINFO_EXTENSION);
@@ -161,7 +171,7 @@ class ItemController extends Controller
         //     $item->image=$path;
         // }
     
-        return redirect('/item/register');
+        return redirect('/item');
     
         }
 /**
@@ -172,18 +182,8 @@ class ItemController extends Controller
             $item = Item::where('id', '=', $request->id)->first();
             $item->delete();
         
-            return redirect('/item/register');
+            return redirect('/item');
 
             }
 
-
-            // 一覧から種別ごとで検索かける 作成中
-            // public function select(){
-            //     $item = Item::where('type', '=', '1')->get();
-            //     $types = Item::TYPES;
-            //     return view('item/index',[
-            //         'item'=> $item,
-            //         'types'=> $types
-            //     ]);
-            // }
 }

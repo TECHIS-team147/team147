@@ -1,3 +1,6 @@
+
+ 
+
 @extends('item.layouts.app2')
 @section('content')
 <!DOCTYPE html>
@@ -7,17 +10,21 @@
           <meta http-equiv="X-UA-Compatible" content="IE=edge">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-          <title>Document</title>
+          <link rel="stylesheet" href="{{ asset('css/style_at.css') }}">
+          <title>商品登録画面</title>
 </head>
 <body>
+<div class="m-5">
     <div class="form">
         <div class="form_title form-select-lg">商品登録画面</div><br>
             <div class="form_content">
                 <form action = "{{ route('itemRegister') }}" method="post" enctype="multipart/form-data">
-                {{ csrf_field() }}
-        <!-- @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-        @endforeach -->
+                {{ csrf_field() }} 
+                <!-- <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                    @endforeach
+                </ul> -->
                     <div class="form-group">
                         <label>名前</label>
                         <input name="name" type="text" class="form-control" value="{{ old('name') }}">
@@ -64,16 +71,22 @@
                         <label>詳細</label><br>
                         <textarea name="detail" cols="60" rows="10" placeholder="500文字以内で入力してください" value="{{ old('detail') }}">{{ old('detail') }}</textarea>
                     </div>
-                    <ul>
-                        @if ($errors->has('detail'))
-                            <li>{{$errors->first('detail')}}</li>
-                        @endif
-                    </ul>
+                        <ul>
+                            @if ($errors->has('detail'))
+                                <li>{{$errors->first('detail')}}</li>
+                            @endif
+                        </ul>
                     <br>
 
                     <div>
                         <label for="formFileMultiple" class="form-label">画像</label>
                         <input class="form-control" name="image" type="file" accept="image/*" id="formFileMultiple" multiple value="{{ old('image') }}">
+
+                        <ul>  
+                            @if ($errors->has('image'))
+                                <li>{{$errors->first('image')}}</li>
+                                @endif
+                        </ul>
                     </div><br><br>
 
                     <div>
@@ -87,6 +100,7 @@
             
         </div>
     </div> 
+</div>
 </body>
 </html>
 @endsection

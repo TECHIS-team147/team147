@@ -4,7 +4,7 @@
           <a href="{{route('index')}}" class = 'list-group-item' >
           <i class="fas fa-home pr-2"></i><span>すべて</span>
           </a>
-          <a href="{{route('itemRegister')}}" class = 'list-group-item' >
+          <a href="/item/select" class = 'list-group-item' >
           <i class="fas fa-home pr-2"></i><span>カブトムシ</span>
           </a>
 

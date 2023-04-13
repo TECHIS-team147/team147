@@ -33,7 +33,7 @@
                     <td>{{$user->email}}</td>
                     <!-- <td>{{$user->created_at}}</td> -->
                     <!-- <td>{{$user->updated_at}}</td> -->
-                    <td><a href="/user/edit/{{$user->id}}">>>編集</a></td>
+                    <td><a href="/user/edit/{{$user->id}}">>> 編集</a></td>
                 </tr>
                 @endforeach
     </table>

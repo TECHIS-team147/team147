@@ -16,7 +16,7 @@
     <table class="table table-bordered">
                 <thead>
                     <tr>
-                    <th>管理者権限</th>   
+                    <th>管理者権限(0:ユーザー1:管理者)</th>   
                     <th>ID</th>
                     <th>名前</th>
                     <th>メールアドレス</th>
@@ -33,7 +33,7 @@
                     <td>{{$user->email}}</td>
                     <!-- <td>{{$user->created_at}}</td> -->
                     <!-- <td>{{$user->updated_at}}</td> -->
-                    <td><a href="/user/edit/{{$user->id}}">>>編集</a></td>
+                    <td><a href="/user/edit/{{$user->id}}">>> 編集</a></td>
                 </tr>
                 @endforeach
     </table>

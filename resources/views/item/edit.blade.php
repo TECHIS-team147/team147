@@ -13,7 +13,7 @@
 <body>
 
 <div class="m-5">
-<div class="form">
+<div class="form"> 
   <h2>商品編集画面 {{$item->id}}</h2>
     <form action ="{{ route('itemEdit') }}" method ="post" enctype="multipart/form-data"><br>
         {{ csrf_field() }}
@@ -21,7 +21,7 @@
           <input type="hidden" name="id" value = "{{$item->id}}">
 
           <div class="col-xs-4">
-            <label>名前</label><br>
+            <label>名前</label><br> 
             <input name="name" type="text" class="form-control" value="{{ old('name', $item->name) }}"><br>
               <!-- <input class="form-control" type="text" name="name" value ="{{$item->name}}"> -->
                 <ul>

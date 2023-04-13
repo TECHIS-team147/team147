@@ -81,7 +81,7 @@ class ItemController extends Controller
 
         $item->save();
 
-        return redirect('/item');
+        return redirect('/item'); 
 
     }
 

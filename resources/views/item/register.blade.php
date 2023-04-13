@@ -16,7 +16,7 @@
         <div class="form_title form-select-lg">商品登録画面</div><br>
             <div class="form_content">
                 <form action = "{{ route('itemRegister') }}" method="post" enctype="multipart/form-data">
-                {{ csrf_field() }}
+                {{ csrf_field() }} 
                 <!-- <ul>
                     @foreach ($errors->all() as $error)
                     <li>{{$error}}</li>
